@@ -1,41 +1,39 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import DownloadOverlay from "../components/collage/DownloadOverlay.astro";
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DownloadOverlay from '../components/collage/DownloadOverlay.astro'
 ---
 
 <BaseLayout title="Your collage">
   <DownloadOverlay />
   <div class="layout">
+    <div>
+      <h1>Your collage</h1>
 
-  <div>
-    <h1>Your collage</h1>
+      <div class="layout-selector">
+        <button data-layout="grid">
+          <i data-lucide="layout-grid"></i> grid
+        </button>
 
-    <div class="layout-selector">
-  <button data-layout="grid">
-    <i data-lucide="layout-grid"></i> grid
-  </button>
+        <button data-layout="horizontal">
+          <i data-lucide="rows"></i> Horizontal
+        </button>
 
-  <button data-layout="horizontal">
-    <i data-lucide="rows"></i> Horizontal
-  </button>
+        <button data-layout="vertical">
+          <i data-lucide="columns"></i> vertical
+        </button>
 
-  <button data-layout="vertical">
-    <i data-lucide="columns"></i> vertical
-  </button>
+        <button id="clear-selection" disabled>
+          <i data-lucide="trash-2"></i> Limpiar
+        </button>
 
-  <button id="clear-selection" disabled>
-    <i data-lucide="trash-2"></i> Limpiar
-  </button>
+        <button id="download-collage">
+          <i data-lucide="download"></i> Descargar
+        </button>
+      </div>
 
-  <button id="download-collage">
-    <i data-lucide="download"></i> Descargar
-  </button>
-</div>
-
-    <div id="empty-state" hidden></div>
-    <div id="collage-root"></div>
-</div>
-
+      <div id="empty-state" hidden></div>
+      <div id="collage-root"></div>
+    </div>
   </div>
 
   <script src="/src/islands/collage.ts" type="module"></script>

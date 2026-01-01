@@ -1,2 +1,2 @@
-import { createIcons, icons } from 'lucide';
-createIcons({ icons });
+import { createIcons, icons } from 'lucide'
+createIcons({ icons })

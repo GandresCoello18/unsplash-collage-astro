@@ -20,9 +20,7 @@ const downloadBtn = document.getElementById(
   'download-collage'
 ) as HTMLButtonElement
 
-const clearBtn = document.getElementById(
-  'clear-selection'
-) as HTMLButtonElement
+const clearBtn = document.getElementById('clear-selection') as HTMLButtonElement
 
 /* ---------- STATE ---------- */
 
@@ -100,10 +98,7 @@ layoutButtons.forEach(button => {
 
 function updateActiveButton() {
   layoutButtons.forEach(btn => {
-    btn.classList.toggle(
-      'active',
-      btn.dataset.layout === state!.layout
-    )
+    btn.classList.toggle('active', btn.dataset.layout === state!.layout)
   })
 }
 
@@ -115,8 +110,8 @@ clearBtn.addEventListener('click', () => {
   const confirmed = confirm('Clear selected images?')
   if (!confirmed) return
 
-  state = null;
-  cleanCollage();
+  state = null
+  cleanCollage()
 
   updateUI()
 })
@@ -166,9 +161,7 @@ downloadBtn.addEventListener('click', async () => {
 
 /* ---------- DOWNLOAD OVERLAY ---------- */
 
-const overlay = document.getElementById(
-  'download-overlay'
-) as HTMLElement
+const overlay = document.getElementById('download-overlay') as HTMLElement
 
 function showOverlay() {
   overlay.classList.remove('hidden')

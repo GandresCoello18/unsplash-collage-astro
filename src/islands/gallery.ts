@@ -6,9 +6,7 @@ const selected = new Set<string>()
 
 const cards = document.querySelectorAll<HTMLElement>('.image-card')
 const counter = document.getElementById('selection-count')!
-const button = document.getElementById(
-  'create-collage'
-) as HTMLButtonElement
+const button = document.getElementById('create-collage') as HTMLButtonElement
 
 /* ---------- helpers ---------- */
 
@@ -54,9 +52,7 @@ button.addEventListener('click', () => {
   if (selected.size === 0) return
 
   const images = Array.from(selected).map(id => {
-    const card = document.querySelector(
-      `[data-image-id="${id}"]`
-    )!
+    const card = document.querySelector(`[data-image-id="${id}"]`)!
     const img = card.querySelector('img')!
 
     return {

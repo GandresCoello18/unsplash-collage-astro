@@ -8,18 +8,27 @@
       <i data-lucide="image"></i>
       Explore
     </a>
-    <a href="/collage" class={Astro.url.pathname === '/collage' ? 'active' : ''}>
+    <a
+      href="/collage"
+      class={Astro.url.pathname === '/collage' ? 'active' : ''}
+    >
       <i data-lucide="layout-grid"></i>
       Generate
     </a>
-    <a href="/gallery" class={Astro.url.pathname === '/gallery' ? 'active' : ''}>
+    <a
+      href="/gallery"
+      class={Astro.url.pathname === '/gallery' ? 'active' : ''}
+    >
       <i data-lucide="gallery-horizontal"></i>
       Gallery
     </a>
   </nav>
 
   <div class="profile-card">
-    <img src="https://andres-coello-goyes.vercel.app/profile.jpeg" alt="Andres coello" />
+    <img
+      src="https://andres-coello-goyes.vercel.app/profile.jpeg"
+      alt="Andres coello"
+    />
     <div>
       <strong>Andrés Coello</strong>
       <span>Software Engennier</span>
