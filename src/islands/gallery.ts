@@ -1,4 +1,5 @@
 import { createCollage, saveCollage } from '../lib/collage-state'
+import { getPhotos } from '../lib/unsplash/endpoints'
 
 const MAX = 4
 
@@ -69,3 +70,50 @@ button.addEventListener('click', () => {
 })
 
 updateUI()
+
+function renderSkeletons(count = 12) {
+  grid.innerHTML = Array.from({ length: count })
+    .map(
+      () => `
+      <div class="image-card skeleton">
+        <div class="skeleton-img"></div>
+      </div>
+    `
+    )
+    .join('')
+}
+
+function renderError() {
+  grid.innerHTML = `
+    <div class="error-card">
+      <i data-lucide="alert-triangle"></i>
+      <h3>Something went wrong</h3>
+      <p>We couldn’t load images. Please try again.</p>
+    </div>
+  `
+}
+
+const grid = document.querySelector('.gallery-grid') as HTMLElement
+
+async function loadImages() {
+  renderSkeletons()
+
+  try {
+    const images = await getPhotos()
+
+    grid.innerHTML = images
+      .map(
+        img => `
+        <article class="image-card">
+          <img src="${img.urls.small}" alt="${img.alt_description ?? ''}" />
+        </article>
+      `
+      )
+      .join('')
+  } catch (err) {
+    console.error(err)
+    renderError()
+  }
+}
+
+loadImages()

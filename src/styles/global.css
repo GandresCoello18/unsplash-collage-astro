@@ -186,3 +186,42 @@ img {
   opacity: 0.4;
   pointer-events: none;
 }
+
+.error-card {
+  grid-column: 1 / -1;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(239, 68, 68, 0.1);
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-card i {
+  width: 32px;
+  height: 32px;
+  color: #ef4444;
+  margin-bottom: 0.75rem;
+}
+
+.error-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.skeleton-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #1a1f36 25%, #2a2f4f 37%, #1a1f36 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
