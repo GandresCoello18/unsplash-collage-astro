@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/layout/Header.astro";
+import GalleryGrid from "../components/gallery/GalleryGrid.astro";
+---
+
+<BaseLayout>
+  <div class="layout">
+    <div>
+      <Header />
+
+      <div class="selection-bar">
+        <span id="selection-count">0 / 4 selected</span>
+        <button id="create-collage" disabled>
+          Create collage
+        </button>
+      </div>
+
+      <GalleryGrid />
+    </div>
+  </div>
+
+  <script src="/src/islands/gallery.ts" type="module"></script>
+</BaseLayout>

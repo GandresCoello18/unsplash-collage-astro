@@ -1,0 +1,42 @@
+---
+import ImageCard from "./ImageCard.astro";
+
+const images = [
+  {
+    id: "img-1",
+    src: "https://images.unsplash.com/photo-1761839259946-2d80f8e72e18",
+    alt: "Sample image 1",
+  },
+  {
+    id: "img-2",
+    src: "https://plus.unsplash.com/premium_photo-1670333351937-68cb2735a0fd",
+    alt: "Sample image 2",
+  },
+  {
+    id: "img-3",
+    src: "https://images.unsplash.com/photo-1765566389976-19600799d684",
+    alt: "Sample image 3",
+  },
+  {
+    id: "img-4",
+    src: "https://images.unsplash.com/photo-1767072528350-4211df85970a",
+    alt: "Sample image 4",
+  },
+  {
+    id: "img-5",
+    src: "https://plus.unsplash.com/premium_photo-1760028215121-0cb0f3b99fca",
+    alt: "Sample image 5",
+  },
+  {
+    id: "img-6",
+    src: "https://images.unsplash.com/photo-1766920562141-264547e089fe",
+    alt: "Sample image 6",
+  },
+];
+---
+
+<section class="gallery-grid">
+  {images.map(image => (
+    <ImageCard {...image} />
+  ))}
+</section>

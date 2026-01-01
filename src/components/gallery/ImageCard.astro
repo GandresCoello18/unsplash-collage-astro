@@ -1,0 +1,7 @@
+---
+const { id, src, alt } = Astro.props
+---
+
+<div class="image-card" data-image-id={id}>
+  <img src={src} alt={alt ?? 'Unsplash image'} />
+</div>

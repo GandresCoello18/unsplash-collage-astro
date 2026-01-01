@@ -1,0 +1,32 @@
+---
+import "../styles/global.css";
+import "../styles/collage.css";
+import "../styles/overlay.css";
+import "../styles/sidebar.css";
+import Sidebar from "../components/layout/Sidebar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unsplash Collage</title>
+  </head>
+
+  <body>
+    <button id="menu-toggle" class="menu-toggle">
+      <i data-lucide="menu"></i>
+    </button>
+    
+    <div class="app-layout">
+      <Sidebar />
+      <main class="main">
+        <slot />
+      </main>
+    </div>
+
+    <script src="/src/islands/sidebar.ts" type="module"></script>
+    <script src="/src/islands/lucide.ts" type="module"></script>
+  </body>
+</html>
