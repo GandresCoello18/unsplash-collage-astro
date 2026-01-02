@@ -1,5 +1,6 @@
 import { createCollage, saveCollage } from '../lib/collage-state'
-import { getPhotos } from '../lib/unsplash/endpoints'
+import { getPhotos, searchPhotos } from '../lib/unsplash/endpoints'
+import { debounce } from '../lib/utils/debounce'
 
 const MAX = 4
 
@@ -94,8 +95,9 @@ function renderError() {
 }
 
 const grid = document.querySelector('.gallery-grid') as HTMLElement
+const searchInput = document.getElementById('search-input') as HTMLInputElement
 
-async function loadImages() {
+async function loadDefaultImages() {
   renderSkeletons()
 
   try {
@@ -116,4 +118,52 @@ async function loadImages() {
   }
 }
 
-loadImages()
+async function loadSearchImages(query: string) {
+  renderSkeletons()
+
+  try {
+    const res = await searchPhotos(query)
+    const images = res.results
+
+    grid.innerHTML = images
+      .map(
+        img => `
+        <article class="image-card">
+          <img
+            src="${img.urls.small}"
+            alt="${img.alt_description ?? ''}"
+            loading="lazy"
+          />
+        </article>
+      `
+      )
+      .join('')
+  } catch (err) {
+    console.error(err)
+    renderError()
+  }
+}
+
+/* ---------- SEARCH HANDLER ---------- */
+
+const handleSearch = debounce((value: string) => {
+  const query = value.trim()
+
+  if (!query) {
+    loadDefaultImages()
+    return
+  }
+
+  loadSearchImages(query)
+}, 500)
+
+/* ---------- EVENTS ---------- */
+
+searchInput?.addEventListener('input', e => {
+  const value = (e.target as HTMLInputElement).value
+  handleSearch(value)
+})
+
+/* ---------- INIT ---------- */
+
+loadDefaultImages()
