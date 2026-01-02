@@ -1,11 +1,12 @@
-import * as htmlToImage from 'html-to-image'
+import * as htmlToImage from 'html-to-image';
+import { saveCollage as saveCollageToStorage } from '../lib/storage/collages.repository';
 import {
   loadCollage,
   saveCollage,
   cleanCollage,
   updateLayout,
   type CollageLayout,
-} from '../lib/collage-state'
+} from '../lib/collage-state';
 
 /* ---------- DOM ---------- */
 
@@ -148,10 +149,16 @@ downloadBtn.addEventListener('click', async () => {
       cacheBust: true,
     })
 
-    const link = document.createElement('a')
-    link.download = 'collage.png'
-    link.href = dataUrl
-    link.click()
+    const link = document.createElement('a');
+    link.download = 'collage' + `${Date.now()}.png`;
+    link.href = dataUrl;
+    link.click();
+
+    saveCollageToStorage({
+      id: crypto.randomUUID(),
+      image: dataUrl,
+      createdAt: Date.now(),
+    })
   } catch (err) {
     console.error('Download failed', err)
   } finally {

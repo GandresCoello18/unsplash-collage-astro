@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import DownloadOverlay from '../components/collage/DownloadOverlay.astro'
+---
+
+<BaseLayout title="Your Gallery">
+  <DownloadOverlay />
+  <div class="layout">
+    <div>
+      <h1>Your Gallery</h1>
+
+      <div class="layout-selector">
+        <button data-layout="grid">
+          <i data-lucide="layout-grid"></i> grid
+        </button>
+      </div>
+
+      <div id="empty-state" hidden></div>
+      <div id="gallery-root"></div>
+    </div>
+  </div>
+
+  <script src="/src/islands/repositorie.ts" type="module"></script>
+</BaseLayout>
