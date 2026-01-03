@@ -85,6 +85,8 @@ Esto reduce:
 * Tiempo de carga
 * Complejidad innecesaria
 
+<img width="524" height="1036" alt="ChatGPT Image Jan 2, 2026, 06_52_26 PM" src="https://github.com/user-attachments/assets/be270b79-6c49-4147-bc47-2c5e48e9b481" />
+
 ---
 
 ### Estructura del proyecto
