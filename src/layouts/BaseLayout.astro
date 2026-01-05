@@ -38,7 +38,9 @@ const { title = 'Unsplash Collage' } = Astro.props
       </main>
     </div>
 
-    <script src="/src/islands/navigation-sidebar.ts" type="module"></script>
-    <script src="/src/islands/lucide-icons-init.ts" type="module"></script>
+    <script>
+      import '../islands/navigation-sidebar.ts'
+      import '../islands/lucide-icons-init.ts'
+    </script>
   </body>
 </html>
