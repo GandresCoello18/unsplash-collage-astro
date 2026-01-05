@@ -1,13 +1,3 @@
-Perfecto 👌
-Te voy a generar un **README listo para GitHub / portfolio**, pensado con **doble lectura**:
-
-- 🧠 **Técnica** → para frontend engineers / reviewers
-- 👀 **No tan técnica** → para reclutadores y perfiles no técnicos
-
-Usa un tono profesional, claro y vende bien tus decisiones de arquitectura.
-
----
-
 # 🖼️ Unsplash Collage Generator
 
 Aplicación **100% frontend** construida con **Astro** que permite explorar imágenes desde Unsplash, seleccionar hasta 4, generar collages con distintos layouts y descargarlos como imagen — todo **sin backend**.
@@ -18,7 +8,10 @@ Aplicación **100% frontend** construida con **Astro** que permite explorar imá
 
 ## 🚀 Demo
 
-👉 _(Aquí puedes poner el link cuando lo publiques en Vercel / Netlify)_
+👉 https://unsplash-collage-astro.vercel.app/
+
+<img width="700" height="397" alt="image" src="https://github.com/user-attachments/assets/af5ee2af-9fa9-4e03-9aef-f734f653e566" />
+
 
 ---
 
@@ -36,7 +29,7 @@ Desde el punto de vista técnico:
 
 - Todo ocurre **en el navegador**
 - No hay backend, base de datos ni autenticación
-- El estado se maneja con **LocalStorage / IndexedDB**
+- El estado se maneja con **IndexedDB**
 - Astro renderiza HTML estático y solo hidrata lo necesario (Islands)
 
 ---
@@ -54,7 +47,7 @@ Desde el punto de vista técnico:
 
 - **Unsplash API** – búsqueda y exploración de imágenes
 - **html-to-image** – exportar el collage como PNG
-- **LocalStorage / IndexedDB** – persistencia local
+- **IndexedDB** – persistencia local
 
 ### Filosofía
 
@@ -160,10 +153,6 @@ src/
 
 Se usan dos estrategias según el caso:
 
-- **LocalStorage**
-  - Estado del collage actual
-  - Selección de imágenes
-
 - **IndexedDB**
   - Collages exportados
   - Mayor capacidad
@@ -182,7 +171,7 @@ Esto permite:
 ### Requisitos previos
 
 - **Node.js** ≥ 18
-- **npm** o **pnpm**
+- **yarn** - **npm** o **pnpm**
 - Una **API Key de Unsplash**
 
 ---
@@ -199,7 +188,7 @@ cd unsplash-collage
 ### 2️⃣ Instalar dependencias
 
 ```bash
-npm install
+yarn install
 ```
 
 ---
@@ -219,7 +208,7 @@ PUBLIC_UNSPLASH_ACCESS_KEY=tu_api_key_aqui
 ### 4️⃣ Ejecutar en desarrollo
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 Abrir en el navegador:
@@ -233,8 +222,8 @@ http://localhost:4321
 ## 🏗️ Build de producción
 
 ```bash
-npm run build
-npm run preview
+yarn build
+yarn preview
 ```
 
 ---
@@ -252,19 +241,24 @@ Este proyecto fue creado para demostrar:
 
 ---
 
-## 👤 Autor
+## Autores ✒️
 
-**Andrés Coello**
-Software Engineer
+- **Andrés Coello Goyes** - _SOFTWARE ENGINEER_ - [Andres Coello](https://linktr.ee/gandrescoello)
 
-- 🌐 Portfolio: [https://andres-coello-goyes.vercel.app](https://andres-coello-goyes.vercel.app)
-- 💼 LinkedIn: _(opcional)_
-- 🧑‍💻 GitHub: _(opcional)_
+#### 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://andres-coello-goyes.vercel.app/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andrescoellogoyes/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/acoellogoyes)
+
+## Expresiones de Gratitud 🎁
+
+- Pasate por mi perfil para ver algun otro proyecto 📢
+- Desarrollemos alguna app juntos, puedes escribirme en mis redes.
+- Muchas gracias por pasarte por este proyecto 🤓.
 
 ---
 
-Si quieres, en el siguiente mensaje puedo:
+⌨️ con ❤️ por [Andres Coello Goyes](https://linktr.ee/gandrescoello) 😊
 
-- Ajustarlo a **inglés 100%**
-- Hacer una versión **más corta para recruiters**
-- O ayudarte a escribir el **README pitch** que aparece arriba del repo ⭐
+<img width="400" height="400" alt="1764558900283" src="https://github.com/user-attachments/assets/cde88968-7856-49ec-bdb1-53a82bf9caa3" />
+
