@@ -119,7 +119,7 @@ clearBtn.addEventListener('click', () => {
 
 /* ---------- DOWNLOAD ---------- */
 
-function waitForImages(container: HTMLElement) {
+function waitForImages(container: HTMLElement, timeout = 10000): Promise<void> {
   const images = Array.from(container.querySelectorAll('img'))
 
   return Promise.all(
@@ -129,40 +129,67 @@ function waitForImages(container: HTMLElement) {
       }
 
       return new Promise<void>((resolve, reject) => {
-        img.onload = () => resolve()
-        img.onerror = () => reject()
+        const timeoutId = setTimeout(() => {
+          reject(new Error('Image load timeout'))
+        }, timeout)
+
+        img.onload = () => {
+          clearTimeout(timeoutId)
+          resolve()
+        }
+        img.onerror = () => {
+          clearTimeout(timeoutId)
+          reject(new Error(`Failed to load image: ${img.src}`))
+        }
       })
     })
-  )
+  ) as Promise<void>
 }
 
 downloadBtn.addEventListener('click', async () => {
   const collage = document.querySelector('.collage') as HTMLElement
-  if (!collage) return
+  if (!collage) {
+    console.error('Collage element not found')
+    return
+  }
 
   try {
     showOverlay()
+    downloadBtn.disabled = true
+
     await waitForImages(collage)
 
     const dataUrl = await htmlToImage.toPng(collage, {
       pixelRatio: 2,
       cacheBust: true,
+      quality: 1,
     })
 
-    const link = document.createElement('a');
-    link.download = 'collage' + `${Date.now()}.png`;
-    link.href = dataUrl;
-    link.click();
+    // Download the image
+    const link = document.createElement('a')
+    link.download = `collage-${Date.now()}.png`
+    link.href = dataUrl
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
 
-    saveCollageToStorage({
-      id: crypto.randomUUID(),
-      image: dataUrl,
-      createdAt: Date.now(),
-    })
+    // Save to storage
+    try {
+      await saveCollageToStorage({
+        id: crypto.randomUUID(),
+        image: dataUrl,
+        createdAt: Date.now(),
+      })
+    } catch (storageError) {
+      console.warn('Failed to save collage to storage:', storageError)
+      // Don't fail the download if storage fails
+    }
   } catch (err) {
-    console.error('Download failed', err)
+    console.error('Download failed:', err)
+    alert('Failed to download collage. Please try again.')
   } finally {
     hideOverlay()
+    downloadBtn.disabled = false
   }
 })
 

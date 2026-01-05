@@ -1,7 +1,14 @@
+/**
+ * Unsplash API client
+ * Handles all API requests to Unsplash
+ */
+
 const ACCESS_KEY = import.meta.env.PUBLIC_UNSPLASH_ACCESS_KEY
 
 if (!ACCESS_KEY) {
-  console.warn('Unsplash API key is missing')
+  console.warn(
+    'Unsplash API key is missing. Please set PUBLIC_UNSPLASH_ACCESS_KEY in your .env file'
+  )
 }
 
 export async function unsplashFetch<T>(

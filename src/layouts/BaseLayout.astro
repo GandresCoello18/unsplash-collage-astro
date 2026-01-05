@@ -4,6 +4,12 @@ import '../styles/collage.css'
 import '../styles/overlay.css'
 import '../styles/sidebar.css'
 import Sidebar from '../components/layout/Sidebar.astro'
+
+interface Props {
+  title?: string
+}
+
+const { title = 'Unsplash Collage' } = Astro.props
 ---
 
 <!doctype html>
@@ -11,13 +17,16 @@ import Sidebar from '../components/layout/Sidebar.astro'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unsplash Collage</title>
+    <meta name="description" content="Create beautiful collages from Unsplash images" />
+    <title>{title}</title>
   </head>
 
   <body>
-    <button id="menu-toggle" class="menu-toggle">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
       <i data-lucide="menu"></i>
     </button>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <div class="app-layout">
       <Sidebar />

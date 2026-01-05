@@ -1,10 +1,38 @@
 :root {
-  --bg: #0b1020;
-  --surface: #11162a;
-  --primary: #7e4cf3;
-  --accent: #22d3ee;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
+  /* Colors */
+  --color-bg: #0b1020;
+  --color-surface: #11162a;
+  --color-primary: #7e4cf3;
+  --color-accent: #22d3ee;
+  --color-text: #e5e7eb;
+  --color-text-muted: #9ca3af;
+  --color-error: #ef4444;
+  
+  /* Legacy aliases for backward compatibility */
+  --bg: var(--color-bg);
+  --surface: var(--color-surface);
+  --primary: var(--color-primary);
+  --accent: var(--color-accent);
+  --text: var(--color-text);
+  --muted: var(--color-text-muted);
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
 }
 
 * {
@@ -13,9 +41,10 @@
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--color-bg);
-  color: var(--text-primary);
+  color: var(--color-text);
+  line-height: 1.5;
 }
 
 .lucide {
@@ -55,15 +84,16 @@ body {
 .nav-item {
   display: block;
   padding: 0.75rem;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-base), color var(--transition-base);
 }
 
 .nav-item.active,
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
+  color: var(--color-text);
 }
 
 .header {
@@ -75,10 +105,17 @@ body {
 
 .header input {
   background: var(--color-surface);
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.75rem 1rem;
-  border-radius: 999px;
-  color: white;
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-base);
+}
+
+.header input:focus {
+  outline: none;
+  border-color: var(--color-primary);
 }
 
 .gallery-grid {
@@ -88,9 +125,16 @@ body {
 }
 
 .image-card {
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-surface);
+  cursor: pointer;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.image-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .image-card img {
@@ -103,10 +147,6 @@ body {
 @media (max-width: 768px) {
   .layout {
     grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    display: none;
   }
 
   .main {
@@ -163,13 +203,19 @@ img {
 }
 
 .selection-bar button {
-  background: var(--primary);
+  background: var(--color-primary);
   color: #000;
   border: none;
   padding: 0.5rem 0.75rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-weight: 500;
+  transition: opacity var(--transition-base), transform var(--transition-fast);
+}
+
+.selection-bar button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.02);
 }
 
 .selection-bar button:disabled {
@@ -179,42 +225,115 @@ img {
 
 /* image selection */
 .image-card.selected {
-  outline: 3px solid var(--primary);
+  outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
 }
 
 .image-card.disabled {
   opacity: 0.4;
   pointer-events: none;
+  cursor: not-allowed;
 }
 
 .error-card {
   grid-column: 1 / -1;
-  padding: 2rem;
-  border-radius: 16px;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
   background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
   text-align: center;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn var(--transition-slow) ease;
 }
 
 .error-card i {
   width: 32px;
   height: 32px;
-  color: #ef4444;
+  color: var(--color-error);
   margin-bottom: 0.75rem;
 }
 
+.error-card h3 {
+  color: var(--color-text);
+  margin: 0.5rem 0;
+}
+
 .error-card p {
-  color: var(--muted);
+  color: var(--color-text-muted);
   font-size: 0.9rem;
+  margin: 0.5rem 0 0;
 }
 
 .skeleton-img {
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background: linear-gradient(90deg, #1a1f36 25%, #2a2f4f 37%, #1a1f36 63%);
   background-size: 400% 100%;
   animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- Gallery Styles ---------- */
+
+.gallery-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-actions {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.gallery-card:hover .card-actions {
+  opacity: 1;
+}
+
+.delete-btn {
+  background: rgba(239, 68, 68, 0.9);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+  transition: background var(--transition-base), transform var(--transition-fast);
+  backdrop-filter: blur(4px);
+}
+
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 1);
+  transform: scale(1.1);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
 }
 
 @keyframes shimmer {

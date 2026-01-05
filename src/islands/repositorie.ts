@@ -66,45 +66,73 @@ import {
   function renderEmptyState() {
     emptyState.hidden = false
     root.innerHTML = ''
-  
+
     emptyState.innerHTML = `
       <div class="empty-card">
+        <i data-lucide="image-off"></i>
         <h2>No collages yet</h2>
         <p>Create your first collage to see it here.</p>
-        <a href="/gallery" class="primary-link">
+        <a href="/" class="cta">
           Explore images
         </a>
       </div>
     `
+    
+    // Re-initialize lucide icons
+    if (window.lucide) {
+      window.lucide.createIcons()
+    }
   }
   
-  function renderError() {
+  function renderError(message = 'Something went wrong loading your gallery.') {
+    emptyState.hidden = true
     root.innerHTML = `
       <div class="error-card">
-        <p>Something went wrong loading your gallery.</p>
+        <i data-lucide="alert-triangle"></i>
+        <h3>Error</h3>
+        <p>${message}</p>
       </div>
     `
+    
+    // Re-initialize lucide icons
+    if (window.lucide) {
+      window.lucide.createIcons()
+    }
   }
   
   /* ---------- events ---------- */
   
   function bindDeleteEvents() {
     const buttons = root.querySelectorAll<HTMLButtonElement>('.delete-btn')
-  
+
     buttons.forEach(btn => {
       btn.addEventListener('click', async e => {
         const card = (e.currentTarget as HTMLElement).closest(
           '.gallery-card'
         ) as HTMLElement
-  
+
         const id = card.dataset.id
         if (!id) return
-  
-        await deleteCollage(id)
-        card.remove()
-  
-        if (!root.querySelector('.gallery-card')) {
-          renderEmptyState()
+
+        // Confirm deletion
+        if (!confirm('Are you sure you want to delete this collage?')) {
+          return
+        }
+
+        try {
+          await deleteCollage(id)
+          card.style.opacity = '0'
+          card.style.transition = 'opacity 0.3s ease'
+          
+          setTimeout(() => {
+            card.remove()
+            if (!root.querySelector('.gallery-card')) {
+              renderEmptyState()
+            }
+          }, 300)
+        } catch (error) {
+          console.error('Failed to delete collage:', error)
+          alert('Failed to delete collage. Please try again.')
         }
       })
     })

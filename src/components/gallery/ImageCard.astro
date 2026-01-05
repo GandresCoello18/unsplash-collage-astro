@@ -1,7 +1,13 @@
 ---
-const { id, src, alt } = Astro.props
+interface Props {
+  id: string
+  src: string
+  alt?: string
+}
+
+const { id, src, alt = 'Unsplash image' } = Astro.props
 ---
 
-<div class="image-card" data-image-id={id}>
-  <img src={src} alt={alt ?? 'Unsplash image'} />
-</div>
+<article class="image-card" data-image-id={id}>
+  <img src={src} alt={alt} loading="lazy" />
+</article>

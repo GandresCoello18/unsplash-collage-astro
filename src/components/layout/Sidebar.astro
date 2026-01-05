@@ -1,37 +1,37 @@
 <aside class="sidebar">
   <div class="brand">
-    <img src="images/Astro-collage.svg" alt="logo app" />
+    <img src="/images/Astro-collage.svg" alt="Unsplash Collage logo" />
   </div>
 
-  <nav class="menu">
+  <nav class="menu" aria-label="Main navigation">
     <a href="/" class={Astro.url.pathname === '/' ? 'active' : ''}>
       <i data-lucide="image"></i>
-      Explore
+      <span>Explore</span>
     </a>
     <a
       href="/collage"
       class={Astro.url.pathname === '/collage' ? 'active' : ''}
     >
       <i data-lucide="layout-grid"></i>
-      Generate
+      <span>Generate</span>
     </a>
     <a
       href="/gallery"
       class={Astro.url.pathname === '/gallery' ? 'active' : ''}
     >
       <i data-lucide="gallery-horizontal"></i>
-      Gallery
+      <span>Gallery</span>
     </a>
   </nav>
 
   <div class="profile-card">
     <img
       src="https://andres-coello-goyes.vercel.app/profile.jpeg"
-      alt="Andres coello"
+      alt="Andrés Coello profile"
     />
     <div>
       <strong>Andrés Coello</strong>
-      <span>Software Engennier</span>
+      <span>Software Engineer</span>
     </div>
   </div>
 </aside>
