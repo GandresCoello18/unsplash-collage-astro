@@ -26,7 +26,7 @@ function initSidebar() {
     }
   }
 
-  toggle.addEventListener('click', (e) => {
+  toggle.addEventListener('click', e => {
     e.stopPropagation()
     toggleSidebar()
   })
@@ -39,7 +39,7 @@ function initSidebar() {
   })
 
   // Close sidebar when clicking outside on mobile
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', e => {
     if (window.innerWidth <= 1023) {
       const target = e.target as HTMLElement
       if (
@@ -69,7 +69,7 @@ function initSidebar() {
   // Close sidebar when clicking a link (mobile navigation)
   if (window.innerWidth <= 1023) {
     const links = sidebar.querySelectorAll('a')
-    links.forEach((link) => {
+    links.forEach(link => {
       link.addEventListener('click', () => {
         if (sidebar.classList.contains('open')) {
           toggleSidebar()

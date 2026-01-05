@@ -20,7 +20,10 @@ export function getPhotos(page = UNSPLASH_CONFIG.DEFAULT_PAGE) {
   })
 }
 
-export function searchPhotos(query: string, page = UNSPLASH_CONFIG.DEFAULT_PAGE) {
+export function searchPhotos(
+  query: string,
+  page = UNSPLASH_CONFIG.DEFAULT_PAGE
+) {
   if (!query.trim()) {
     throw new Error('Search query cannot be empty')
   }

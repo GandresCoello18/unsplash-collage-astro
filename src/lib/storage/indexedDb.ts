@@ -15,7 +15,7 @@ export function openDB(): Promise<IDBDatabase> {
 
     const request = indexedDB.open(DB_NAME, DB_VERSION)
 
-    request.onupgradeneeded = (event) => {
+    request.onupgradeneeded = event => {
       const db = (event.target as IDBOpenDBRequest).result
       if (!db.objectStoreNames.contains(STORE_NAME)) {
         const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' })
@@ -29,12 +29,17 @@ export function openDB(): Promise<IDBDatabase> {
     }
 
     request.onerror = () => {
-      reject(new Error(`Failed to open database: ${request.error?.message || 'Unknown error'}`))
+      reject(
+        new Error(
+          `Failed to open database: ${request.error?.message || 'Unknown error'}`
+        )
+      )
     }
 
     request.onblocked = () => {
-      console.warn('IndexedDB upgrade blocked. Please close other tabs with this app open.')
+      console.warn(
+        'IndexedDB upgrade blocked. Please close other tabs with this app open.'
+      )
     }
   })
 }
-

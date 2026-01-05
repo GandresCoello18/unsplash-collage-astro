@@ -85,7 +85,9 @@ async function loadDefaultImages() {
     renderImages(images)
   } catch (err) {
     console.error('Failed to load images:', err)
-    renderError('Failed to load images. Please check your API key and try again.')
+    renderError(
+      'Failed to load images. Please check your API key and try again.'
+    )
   }
 }
 
@@ -120,7 +122,9 @@ async function loadSearchImages(query: string) {
 /* ---------- Selection Logic ---------- */
 
 function bindSelectionHandlers() {
-  const cards = document.querySelectorAll<HTMLElement>('.image-card:not(.skeleton)')
+  const cards = document.querySelectorAll<HTMLElement>(
+    '.image-card:not(.skeleton)'
+  )
 
   cards.forEach(card => {
     // Remove existing listeners by cloning
@@ -149,7 +153,9 @@ function updateUI() {
   counter.textContent = `${selected.size} / ${MAX_SELECTION} selected`
   button.disabled = selected.size === 0
 
-  const cards = document.querySelectorAll<HTMLElement>('.image-card:not(.skeleton)')
+  const cards = document.querySelectorAll<HTMLElement>(
+    '.image-card:not(.skeleton)'
+  )
 
   if (selected.size === MAX_SELECTION) {
     cards.forEach(card => {

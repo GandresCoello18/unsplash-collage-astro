@@ -1,12 +1,12 @@
-import * as htmlToImage from 'html-to-image';
-import { saveCollage as saveCollageToStorage } from '../lib/storage/collages.repository';
+import * as htmlToImage from 'html-to-image'
+import { saveCollage as saveCollageToStorage } from '../lib/storage/collages.repository'
 import {
   loadCollage,
   saveCollage,
   cleanCollage,
   updateLayout,
   type CollageLayout,
-} from '../lib/collage-state';
+} from '../lib/collage-state'
 
 /* ---------- DOM ---------- */
 
