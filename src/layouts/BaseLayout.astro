@@ -3,7 +3,7 @@ import '../styles/global.css'
 import '../styles/collage.css'
 import '../styles/overlay.css'
 import '../styles/sidebar.css'
-import Sidebar from '../components/layout/Sidebar.astro'
+import NavigationSidebar from '../components/layout/NavigationSidebar.astro'
 
 interface Props {
   title?: string
@@ -17,7 +17,10 @@ const { title = 'Unsplash Collage' } = Astro.props
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Create beautiful collages from Unsplash images" />
+    <meta
+      name="description"
+      content="Create beautiful collages from Unsplash images"
+    />
     <title>{title}</title>
   </head>
 
@@ -29,13 +32,13 @@ const { title = 'Unsplash Collage' } = Astro.props
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
     <div class="app-layout">
-      <Sidebar />
+      <NavigationSidebar />
       <main class="main">
         <slot />
       </main>
     </div>
 
-    <script src="/src/islands/sidebar.ts" type="module"></script>
-    <script src="/src/islands/lucide.ts" type="module"></script>
+    <script src="/src/islands/navigation-sidebar.ts" type="module"></script>
+    <script src="/src/islands/lucide-icons-init.ts" type="module"></script>
   </body>
 </html>

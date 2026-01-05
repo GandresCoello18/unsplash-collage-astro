@@ -1,22 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Header from '../components/layout/Header.astro'
-import GalleryGrid from '../components/gallery/GalleryGrid.astro'
+import ImageSearchHeader from '../components/layout/ImageSearchHeader.astro'
+import UnsplashImageGrid from '../components/gallery/UnsplashImageGrid.astro'
 ---
 
 <BaseLayout title="Explore Images - Unsplash Collage">
   <div>
     <div>
-      <Header />
+      <ImageSearchHeader />
 
       <div class="selection-bar">
         <span id="selection-count">0 / 4 selected</span>
         <button id="create-collage" disabled> Create collage </button>
       </div>
 
-      <GalleryGrid />
+      <UnsplashImageGrid />
     </div>
   </div>
 
-  <script src="/src/islands/gallery.ts" type="module"></script>
+  <script src="/src/islands/unsplash-image-explorer.ts" type="module"></script>
 </BaseLayout>

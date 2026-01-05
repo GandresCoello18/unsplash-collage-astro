@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import DownloadOverlay from '../components/collage/DownloadOverlay.astro'
+import DownloadProgressOverlay from '../components/collage/DownloadProgressOverlay.astro'
 ---
 
 <BaseLayout title="Gallery - Unsplash Collage">
-  <DownloadOverlay />
+  <DownloadProgressOverlay />
   <div class="layout">
     <div>
       <h1>Your Gallery</h1>
@@ -20,5 +20,5 @@ import DownloadOverlay from '../components/collage/DownloadOverlay.astro'
     </div>
   </div>
 
-  <script src="/src/islands/repositorie.ts" type="module"></script>
+  <script src="/src/islands/saved-collages-gallery.ts" type="module"></script>
 </BaseLayout>

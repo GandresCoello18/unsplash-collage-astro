@@ -5,4 +5,3 @@ interface Window {
     createIcons: () => void
   }
 }
-

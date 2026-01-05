@@ -1,8 +1,8 @@
 Perfecto 👌
 Te voy a generar un **README listo para GitHub / portfolio**, pensado con **doble lectura**:
 
-* 🧠 **Técnica** → para frontend engineers / reviewers
-* 👀 **No tan técnica** → para reclutadores y perfiles no técnicos
+- 🧠 **Técnica** → para frontend engineers / reviewers
+- 👀 **No tan técnica** → para reclutadores y perfiles no técnicos
 
 Usa un tono profesional, claro y vende bien tus decisiones de arquitectura.
 
@@ -18,7 +18,7 @@ Aplicación **100% frontend** construida con **Astro** que permite explorar imá
 
 ## 🚀 Demo
 
-👉 *(Aquí puedes poner el link cuando lo publiques en Vercel / Netlify)*
+👉 _(Aquí puedes poner el link cuando lo publiques en Vercel / Netlify)_
 
 ---
 
@@ -34,10 +34,10 @@ Desde el punto de vista del usuario:
 
 Desde el punto de vista técnico:
 
-* Todo ocurre **en el navegador**
-* No hay backend, base de datos ni autenticación
-* El estado se maneja con **LocalStorage / IndexedDB**
-* Astro renderiza HTML estático y solo hidrata lo necesario (Islands)
+- Todo ocurre **en el navegador**
+- No hay backend, base de datos ni autenticación
+- El estado se maneja con **LocalStorage / IndexedDB**
+- Astro renderiza HTML estático y solo hidrata lo necesario (Islands)
 
 ---
 
@@ -45,25 +45,25 @@ Desde el punto de vista técnico:
 
 ### Core
 
-* **Astro** – HTML-first, Island Architecture
-* **TypeScript** – tipado estricto
-* **CSS moderno** – Flexbox, Grid, responsive design
-* **Lucide Icons** – iconografía SVG ligera
+- **Astro** – HTML-first, Island Architecture
+- **TypeScript** – tipado estricto
+- **CSS moderno** – Flexbox, Grid, responsive design
+- **Lucide Icons** – iconografía SVG ligera
 
 ### APIs & librerías
 
-* **Unsplash API** – búsqueda y exploración de imágenes
-* **html-to-image** – exportar el collage como PNG
-* **LocalStorage / IndexedDB** – persistencia local
+- **Unsplash API** – búsqueda y exploración de imágenes
+- **html-to-image** – exportar el collage como PNG
+- **LocalStorage / IndexedDB** – persistencia local
 
 ### Filosofía
 
-* ❌ No React / Vue / Angular
-* ❌ No backend
-* ❌ No frameworks pesados
-* ✅ Performance-first
-* ✅ UX cuidada
-* ✅ Código legible y escalable
+- ❌ No React / Vue / Angular
+- ❌ No backend
+- ❌ No frameworks pesados
+- ✅ Performance-first
+- ✅ UX cuidada
+- ✅ Código legible y escalable
 
 ---
 
@@ -71,19 +71,18 @@ Desde el punto de vista técnico:
 
 ### Astro + Island Architecture
 
-* **HTML estático por defecto**
-* **Islands** solo donde hay interactividad:
-
-  * Sidebar (mobile drawer)
-  * Gallery (fetch + selección)
-  * Collage (layout + descarga)
-  * Gallery page (collages guardados)
+- **HTML estático por defecto**
+- **Islands** solo donde hay interactividad:
+  - Sidebar (mobile drawer)
+  - Gallery (fetch + selección)
+  - Collage (layout + descarga)
+  - Gallery page (collages guardados)
 
 Esto reduce:
 
-* JavaScript enviado al cliente
-* Tiempo de carga
-* Complejidad innecesaria
+- JavaScript enviado al cliente
+- Tiempo de carga
+- Complejidad innecesaria
 
 <img width="524" height="1036" alt="ChatGPT Image Jan 2, 2026, 06_52_26 PM" src="https://github.com/user-attachments/assets/be270b79-6c49-4147-bc47-2c5e48e9b481" />
 
@@ -121,43 +120,39 @@ src/
 ## 🔄 Flujo de datos (simplificado)
 
 1. **Explore**
-
-   * Fetch a Unsplash API
-   * Render grid de imágenes
-   * Selección limitada a 4
+   - Fetch a Unsplash API
+   - Render grid de imágenes
+   - Selección limitada a 4
 
 2. **Collage**
-
-   * Se lee el estado desde LocalStorage
-   * Se renderiza el layout seleccionado
-   * Se exporta a PNG con `html-to-image`
+   - Se lee el estado desde LocalStorage
+   - Se renderiza el layout seleccionado
+   - Se exporta a PNG con `html-to-image`
 
 3. **Gallery**
-
-   * Collages guardados como Base64 / Blob
-   * Persistidos localmente
-   * Renderizados sin backend
+   - Collages guardados como Base64 / Blob
+   - Persistidos localmente
+   - Renderizados sin backend
 
 ---
 
 ## 🎨 UX & UI
 
-* 🌙 UI oscura con paleta violeta + cyan
-* 📱 Mobile-first
-* 🧭 Sidebar:
+- 🌙 UI oscura con paleta violeta + cyan
+- 📱 Mobile-first
+- 🧭 Sidebar:
+  - Desktop: fijo
+  - Mobile: drawer con overlay
 
-  * Desktop: fijo
-  * Mobile: drawer con overlay
-* ✨ Microinteracciones:
+- ✨ Microinteracciones:
+  - Hover states
+  - Transiciones suaves
+  - Estados disabled / empty
 
-  * Hover states
-  * Transiciones suaves
-  * Estados disabled / empty
-* ♿ Accesibilidad básica:
-
-  * Alt en imágenes
-  * Estados visuales claros
-  * Navegación simple
+- ♿ Accesibilidad básica:
+  - Alt en imágenes
+  - Estados visuales claros
+  - Navegación simple
 
 ---
 
@@ -165,22 +160,20 @@ src/
 
 Se usan dos estrategias según el caso:
 
-* **LocalStorage**
+- **LocalStorage**
+  - Estado del collage actual
+  - Selección de imágenes
 
-  * Estado del collage actual
-  * Selección de imágenes
-
-* **IndexedDB**
-
-  * Collages exportados
-  * Mayor capacidad
-  * Mejor rendimiento para blobs/Base64
+- **IndexedDB**
+  - Collages exportados
+  - Mayor capacidad
+  - Mejor rendimiento para blobs/Base64
 
 Esto permite:
 
-* Simular una “galería personal”
-* Mantener el proyecto simple
-* Evitar infraestructura innecesaria
+- Simular una “galería personal”
+- Mantener el proyecto simple
+- Evitar infraestructura innecesaria
 
 ---
 
@@ -188,9 +181,9 @@ Esto permite:
 
 ### Requisitos previos
 
-* **Node.js** ≥ 18
-* **npm** o **pnpm**
-* Una **API Key de Unsplash**
+- **Node.js** ≥ 18
+- **npm** o **pnpm**
+- Una **API Key de Unsplash**
 
 ---
 
@@ -250,12 +243,12 @@ npm run preview
 
 Este proyecto fue creado para demostrar:
 
-* Arquitectura frontend moderna sin frameworks pesados
-* Uso correcto de Astro e Islands
-* Buen criterio de UX/UI
-* Integración con APIs públicas
-* Manejo de estado sin backend
-* Pensamiento orientado a performance y simplicidad
+- Arquitectura frontend moderna sin frameworks pesados
+- Uso correcto de Astro e Islands
+- Buen criterio de UX/UI
+- Integración con APIs públicas
+- Manejo de estado sin backend
+- Pensamiento orientado a performance y simplicidad
 
 ---
 
@@ -264,14 +257,14 @@ Este proyecto fue creado para demostrar:
 **Andrés Coello**
 Software Engineer
 
-* 🌐 Portfolio: [https://andres-coello-goyes.vercel.app](https://andres-coello-goyes.vercel.app)
-* 💼 LinkedIn: *(opcional)*
-* 🧑‍💻 GitHub: *(opcional)*
+- 🌐 Portfolio: [https://andres-coello-goyes.vercel.app](https://andres-coello-goyes.vercel.app)
+- 💼 LinkedIn: _(opcional)_
+- 🧑‍💻 GitHub: _(opcional)_
 
 ---
 
 Si quieres, en el siguiente mensaje puedo:
 
-* Ajustarlo a **inglés 100%**
-* Hacer una versión **más corta para recruiters**
-* O ayudarte a escribir el **README pitch** que aparece arriba del repo ⭐
+- Ajustarlo a **inglés 100%**
+- Hacer una versión **más corta para recruiters**
+- O ayudarte a escribir el **README pitch** que aparece arriba del repo ⭐
