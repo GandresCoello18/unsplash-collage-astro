@@ -87,10 +87,14 @@ Esto reduce:
 src/
 ├── components/
 │   ├── layout/
-│   │   ├── Sidebar.astro
-│   │   └── Header.astro
+│   │   ├── NavigationSidebar.astro
+│   │   └── ImageSearchHeader.astro
 │   ├── gallery/
+│   │   ├── UnsplashImageGrid.astro
+│   │   └── UnsplashImageCard.astro
 │   └── collage/
+│       ├── CollagePreview.astro
+│       └── DownloadProgressOverlay.astro
 ├── layouts/
 │   └── BaseLayout.astro
 ├── pages/
@@ -98,13 +102,23 @@ src/
 │   ├── collage.astro      # Generate collage
 │   └── gallery.astro      # Saved collages
 ├── islands/
-│   ├── gallery.ts
-│   ├── collage.ts
-│   └── sidebar.ts
+│   ├── unsplash-image-explorer.ts
+│   ├── collage-editor.ts
+│   ├── saved-collages-gallery.ts
+│   ├── navigation-sidebar.ts
+│   └── lucide-icons-init.ts
 ├── lib/
-│   ├── unsplash.ts        # API client
-│   ├── collage-state.ts   # state & persistence
-│   └── gallery-store.ts
+│   ├── unsplash/
+│   │   ├── client.ts
+│   │   ├── config.ts
+│   │   ├── endpoints.ts
+│   │   └── types.ts
+│   ├── storage/
+│   │   ├── collages.repository.ts
+│   │   └── indexedDb.ts
+│   ├── utils/
+│   │   └── debounce.ts
+│   └── collage-state.ts
 └── styles/
 ```
 
